@@ -8,8 +8,9 @@ package com.mycompany.antecedentes;
 import java.util.Date;
 
 /**
- *
+ * Clase encapsulador
  * @author duvan
+ * @author ivan camilo
  */
 public class Antecedentes {
     private Date fecha;

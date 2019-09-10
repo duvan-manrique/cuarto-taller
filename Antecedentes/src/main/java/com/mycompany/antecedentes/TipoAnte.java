@@ -6,8 +6,9 @@
 package com.mycompany.antecedentes;
 
 /**
- *
+ * Clase encapsulador
  * @author duvan
+ * @author ivan camilo
  */
 public class TipoAnte {
 

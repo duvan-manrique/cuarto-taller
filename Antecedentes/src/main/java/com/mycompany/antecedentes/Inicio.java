@@ -6,8 +6,9 @@
 package com.mycompany.antecedentes;
 
 /**
- *
+ * Clase principal
  * @author duvan
+ * @author ivan camilo
  */
 public class Inicio {
 

@@ -18,18 +18,36 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author duvan8
+ * Clase encargada de toda las operaciones logicas y peticion de datos
+ * @author duvan
+ * @author ivan camilo
  */
 public class Logica {
+    /**
+     * Variable que se usa en todos los metodos para guardar los datos de persona en una lista
+     */
       ArrayList<Persona> listaPersona;
+      /**
+     * Constructor de la clase
+     */
     public Logica() {
         listaPersona = new ArrayList<>();
         ingresar();
     }
+    /**
+     * Variable que se usa en todos los metodos para guardar los datos del tipo de antecedente
+     * 
+     */
      
     List<TipoAnte> listaA;
+    /**
+     * Variable que se usa en recibir datos por teclado
+     */
     Scanner ingreso;
+    /**
+     * Funcion en la cual pedimos los una letra para saber que desea hacer el usuarop
+     *  
+     */
     public void ingresar(){
            listaPersona =recoverPersonas();
            if(listaPersona==null){
@@ -47,14 +65,19 @@ public class Logica {
             System.out.println("c. Editar una persona");
             System.out.println("d. Eliminar antecendetes");
             System.out.println("e. Visualizar antecedentes");
-            validarMetodo(ingreso.next().charAt(0));
+            OpcionUsuario(ingreso.next().charAt(0));
             System.out.println("Desea Continuar S/N");        
             continuar=ingreso.next();
          }while("s".equals(continuar.toLowerCase()));
     
          
     }
-     private void validarMetodo(char opcion) {
+     /**
+     * Funcion en la cual se resive el parametro que da el usuario para llamar dicha accion elegida por el mismo   * 
+     * @param opcion 
+     *  
+     */
+     private void OpcionUsuario(char opcion) {
         switch (opcion){
             case 'a':
                 insertarPersona();
@@ -78,6 +101,10 @@ public class Logica {
         insertArchivo(listaPersona);
         
     }
+      /**
+     * Funcion en solicitamos los datos de la persona para registrarla     
+     *  
+     */
      private void insertarPersona() { 
         ingreso=new Scanner(System.in);
         System.out.println("Digite su nombre");
@@ -95,7 +122,11 @@ public class Logica {
        
         System.out.println("Registro Exitoso ");
     }
-     
+      /**
+     * Funcion en la cual solicitamso los datos de el antecedente para crear este mismo   * 
+    
+     *  
+     */
        private void insertarAntecedentes() {
         int contador=0;
         ingreso=new Scanner(System.in);
@@ -126,6 +157,10 @@ public class Logica {
         if(contador<=0)
             System.out.println("La persona no esta registrada");  
     }
+        /**
+     * Funcion en la cual registramos el tipo de amtecedemte para saber luego si se puede borrar o no
+     *  
+     */
        private TipoAnte ingresarTipo (int i){
             TipoAnte nuevot = new TipoAnte();
             System.out.println("Ingrese descripcion de antesedente: ");
@@ -135,6 +170,11 @@ public class Logica {
             nuevot.setTipo(i);
             return nuevot;
        }
+        /**
+     * Funcion en cual se trae una persona para editar o modificar sus campos   * 
+     * 
+     *  
+     */
        private void editarPersona(){
             ingreso=new Scanner(System.in);
             System.out.println("Ingrese el numero identificacion");
@@ -147,6 +187,11 @@ public class Logica {
            }
      
 }
+        /**
+     * Funcion en cual se trae una persona para editar o modificar sus campos   * 
+     * 
+     *  
+     */
     private void editarp(Persona persona){ 
             ingreso=new Scanner(System.in);
             System.out.println("Digite su nombre");
@@ -159,6 +204,11 @@ public class Logica {
             persona.setGenero(ingreso.next());
             System.out.println("editor Exitoso ");
         }
+     /**
+     * Funcion en cual se eliminan los antecedentes de el usuario elegido   * 
+     * 
+     *  
+     */
 
     private void eliminarAntecedentesN(){
          ingreso=new Scanner(System.in);
@@ -177,6 +227,11 @@ public class Logica {
         
             }
     }
+     /**
+     * Funcion en cual se listamos los antecedentes por persona   * 
+     * 
+     *  
+     */
     private void visualizarAntecedentes(){
          ingreso=new Scanner(System.in);
         System.out.println("Ingrese el numero identificacion");
@@ -185,17 +240,29 @@ public class Logica {
             if(persona.getCedula()==cedula)
             {
                  for(Antecedentes ante : persona.getLista()){
-                     System.out.println("Persona"+persona.getNombre());   
+                     System.out.println("Persona : "+persona.getNombre());   
+                      System.out.println("Cedula : "+persona.getCedula());
                      System.out.println("Antecedente ");   
-                     System.out.println("Descripcion"+ante.getDescrip());   
-                     System.out.println("Descripcion tipo"+ante.getTipo().getTipo());      
+                     System.out.println("Descripcion: "+ante.getDescrip());
+                     System.out.println("Descripcion tipo: "+ante.getTipo().getDescri()); 
+                     if(ante.getTipo().getTipo()==1){
+                         System.out.println("Tipo de antecedente ´Positivo");      
+                     }else{
+                         System.out.println("Tipo de antecedente ´Negrativo");
+                     }
+                     
                 }
                  
             }
         
             }
     }
-    
+
+     /**
+     * Funcion en cual traemos las personas de el archivo
+     * 
+     *  
+     */
  public ArrayList<Persona> recoverPersonas(){
             ArrayList<Persona> listaPersonas=null;
             try{
@@ -209,6 +276,11 @@ public class Logica {
            return listaPersonas;          
 
         }
+  /**
+     * Funcion en cual guardamos las personas en el archivo
+     * 
+     *  
+     */
  
      public void insertArchivo(ArrayList<Persona> persona){
         try{
