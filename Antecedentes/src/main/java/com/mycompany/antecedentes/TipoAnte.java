@@ -5,12 +5,14 @@
  */
 package com.mycompany.antecedentes;
 
+import java.io.Serializable;
+
 /**
  * Clase encapsulador
  * @author duvan
  * @author ivan camilo
  */
-public class TipoAnte {
+public class TipoAnte implements Serializable{
 
     public String getDescri() {
         return descri;

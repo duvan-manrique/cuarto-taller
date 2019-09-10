@@ -266,7 +266,7 @@ public class Logica {
  public ArrayList<Persona> recoverPersonas(){
             ArrayList<Persona> listaPersonas=null;
             try{
-                FileInputStream archivo=new FileInputStream("carpeta/lista_persona");
+                FileInputStream archivo=new FileInputStream("Carpeta/listapersona");
                 ObjectInputStream objeto=new ObjectInputStream(archivo);
                 listaPersonas=(ArrayList) objeto.readObject();
                 objeto.close();
@@ -284,7 +284,7 @@ public class Logica {
  
      public void insertArchivo(ArrayList<Persona> persona){
         try{
-            File arch=new File("carpeta/lista_persona");
+            File arch=new File("Carpeta/listapersona");
             if (!arch.exists()) 
 		arch.createNewFile();
             FileOutputStream archivo=new FileOutputStream(arch);
@@ -293,8 +293,7 @@ public class Logica {
             objeto.close();
             archivo.close();
         }catch (Exception io){
-            System.err.println(io);
-            System.out.println(io);
+         
         }
     }
        

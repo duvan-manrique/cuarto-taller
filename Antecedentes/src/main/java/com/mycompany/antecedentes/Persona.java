@@ -5,13 +5,14 @@
  */
 package com.mycompany.antecedentes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author duvan
  */
-public class Persona {
+public class Persona implements Serializable{
     private String nombre;
 
     public Persona(String nombre, long cedula, byte edad, String genero) {

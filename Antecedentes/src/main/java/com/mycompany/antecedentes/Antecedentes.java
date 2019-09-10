@@ -5,6 +5,7 @@
  */
 package com.mycompany.antecedentes;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author duvan
  * @author ivan camilo
  */
-public class Antecedentes {
+public class Antecedentes implements Serializable{
     private Date fecha;
     private String descrip;
 
